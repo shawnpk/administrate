@@ -1,11 +1,13 @@
 ENV["RAILS_ENV"] = "test"
 
-require File.expand_path("../../config/environment", __FILE__)
+require File.expand_path("../../spec/example_app/config/environment", __FILE__)
 
 require "rspec/rails"
 require "shoulda/matchers"
 
-Dir[Rails.root.join("spec/support/**/*.rb")].each { |file| require file }
+Dir[Rails.root.join("../../spec/support/**/*.rb")].each { |file| require file }
+
+require "factories"
 
 module Features
   # Extend this module in spec/support/features/*.rb
