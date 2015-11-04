@@ -19,10 +19,10 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
   config.infer_spec_type_from_file_location!
   config.use_transactional_fixtures = false
+end
 
-  config.before(js: true) do
-    page.driver.block_unknown_urls
-  end
+Capybara::Webkit.configure do |c|
+  c.block_unknown_urls
 end
 
 ActiveRecord::Migration.maintain_test_schema!
