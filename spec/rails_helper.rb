@@ -21,9 +21,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
 end
 
-Capybara::Webkit.configure do |c|
-  c.block_unknown_urls
-end
+Capybara::Webkit.configure(&:block_unknown_urls)
 
 ActiveRecord::Migration.maintain_test_schema!
 Capybara.javascript_driver = :webkit
