@@ -1,5 +1,6 @@
-PATH
-  remote: ../../
+GIT
+  remote: git://github.com/thoughtbot/administrate.git
+  revision: bceb50c92de23a1697ac608502f22d303f1a2d8f
   specs:
     administrate (0.1.0)
       autoprefixer-rails (~> 6.0)
