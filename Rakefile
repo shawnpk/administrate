@@ -6,6 +6,8 @@ end
 
 require 'rdoc/task'
 
+require File.expand_path('../spec/example_app/config/application', __FILE__)
+
 RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title    = 'Administrate'
@@ -16,8 +18,6 @@ end
 
 Bundler::GemHelper.install_tasks
 
-require File.expand_path('../spec/example_app/config/application', __FILE__)
-
 Rails.application.load_tasks
 task(:default).clear
 task default: [:spec]
@@ -26,6 +26,13 @@ if defined? RSpec
   task(:spec).clear
   RSpec::Core::RakeTask.new(:spec) do |t|
     t.verbose = false
+  end
+end
+
+desc "Deploy the example app to Heroku"
+namespace :deploy do
+  task :example do
+    exec 'git push heroku `git subtree split --prefix spec/example_app`:master --force'
   end
 end
 
