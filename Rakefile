@@ -29,10 +29,15 @@ if defined? RSpec
   end
 end
 
-desc "Deploy the example app to Heroku"
 namespace :deploy do
-  task :example do
-    exec 'git push heroku `git subtree split --prefix spec/example_app`:master --force'
+  desc "Deploy the example app to Heroku staging"
+  task :staging do
+    exec %(git push staging `git subtree split --prefix spec/example_app`:master --force)
+  end
+
+  desc "Deploy the example app to Heroku production"
+  task :production do
+    exec %(git push production `git subtree split --prefix spec/example_app`:master --force)
   end
 end
 
